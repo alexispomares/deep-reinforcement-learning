@@ -1,0 +1,18 @@
+cloudpickle
+crafter
+gym
+jax
+jaxlib
+numpy
+optax
+rich
+ruamel.yaml
+tensorflow
+tensorflow_probability
+
+# MOD: packages for additional functionality
+ffmpeg
+matplotlib
+opencv-python # a.k.a. cv2
+gymnasium[atari]
+gymnasium[accept-rom-license]
