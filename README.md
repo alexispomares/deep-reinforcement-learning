@@ -2,7 +2,7 @@
 
 ## Motivation
 
-My motivation here (WIP) is to eventually build a general-purpose Deep Reinforcement Learning (RL) pipeline for algorithms that can learn to play any real-time game from scratch, and ideally **reach top-human or superhuman level using only the raw screen pixels as input**. This is a somewhat ambitious goal that will likely not be fulfilled for a few years still, but it's also an important one because it would mean that we have finally have at our disposal a general-purpose AI that can learn tasks with:
+This is a work in progress (WIP) to eventually build a general-purpose Deep Reinforcement Learning (RL) pipeline for algorithms that can learn to play any real-time game from scratch, and ideally **reach top-human or superhuman level using only the raw screen pixels as input**. This is a somewhat ambitious goal that will likely not be fulfilled for a few years still, but it's also an important one because it would mean that we have finally have at our disposal a general-purpose AI that can learn tasks with:
 
 - The same exact input than a human, and...
 - ...a similar amount of training data (rather than many orders of magnitude more, like in traditional RL).
@@ -23,14 +23,15 @@ TL;DR — AGI may be achieved by scaling up the compute thrown at LLMs, but ASI 
 
 The general architecture includes:
 
-- [Dreamer V3](https://danijar.com/project/dreamerv3) for the Deep RL algo, regarded as the [current state of the art](https://reddit.com/r/MachineLearning/comments/12hs2sh/comment/jfqp8vh) in model-based RL because [it uses x100 fewer samples than other algos](https://reddit.com/r/MachineLearning/comments/197jp2b/comment/ki23k8y), and [it can learn to play a wide variety of video games simply from their screen outputs, with no manual tuning or domain knowledge required](https://www.reddit.com/r/MachineLearning/comments/12hs2sh/comment/jfqp8vh), and it's [very recent](https://arxiv.org/pdf/2301.04104.pdf) — this ability to be [trained simply with pixel data from a screen](https://danijar.com/project/dreamerv3) is quite critical because it means it can generalize to any (simple enough) game or task with no need for a simulator like MuZero or other RL algos!
+- TODO: elaborate
+<!--- - [Dreamer V3](https://danijar.com/project/dreamerv3) for the Deep RL algo, regarded as the [current state of the art](https://reddit.com/r/MachineLearning/comments/12hs2sh/comment/jfqp8vh) in model-based RL because [it uses x100 fewer samples than other algos](https://reddit.com/r/MachineLearning/comments/197jp2b/comment/ki23k8y), and [it can learn to play a wide variety of video games simply from their screen outputs, with no manual tuning or domain knowledge required](https://www.reddit.com/r/MachineLearning/comments/12hs2sh/comment/jfqp8vh), and it's [very recent](https://arxiv.org/pdf/2301.04104.pdf) — this ability to be [trained simply with pixel data from a screen](https://danijar.com/project/dreamerv3) is quite critical because it means it can generalize to any (simple enough) game or task with no need for a simulator like MuZero or other RL algos!
 - [Docker](https://docker.com) for the DreamerV3 containerization, so that it can both run on my machine (since `tensorflow-cpu` seems to not be available for Mac M2 chips w/ ARM architecture) and also be easily deployed on my OVH servers (crucial for the future 24/7 livestreams!).
 - [Chess.com](https://chess.com)'s "Explore" feature for the pixel-based Chess engine.
 - A single [NVIDIA RTX 4090]() GPU to train our Deep RL algorithms. Alternatively, another solid solution would be an [OVH bare metal Linux server](https://eco.ovhcloud.com/en), or even [Vast.ai](https://vast.ai) for on-demand cloud infrastructure.
 - Self-hosted GPU+PC server, so that I can have both access to a screen for easy debugging e.g. while using Bluestacks with Clash Royale, and so that I can have it running 24/7 (e.g. for the 'Smallville' LLM) without paying crazy bills to cloud providers.
 - [Xvfb](https://en.wikipedia.org/wiki/Xvfb) to create a virtual display where Bluestacks can run in said OVH servers.
 - [ffmpeg]() (which btw is what's used in the [Pokemon RL inspiration](https://youtu.be/DcYLT37ImBY?si=ZhejWcVJdS61wrXj&t=1962), incl. switching on/off a headless mode!) to capture the pixels from the virtual display created by Xvfb. We can use ffmpeg's `x11grab` feature to capture the screen content of Xvfb's virtual display as training data.
-- Ideally [X](https://help.twitter.com/en/using-x/how-to-use-live-producer#:~:text=Broadcasts%20scheduled%20to%20Start%20later,broadcast%20before%20it%20goes%20live) as a livestream platform for said renders (+ AI stuff to show it is "alive" and "continuously improving on its own"), but perhaps [Twitch](https://twitch.tv) instead since it's the most popular platform for livestreaming and also has a [nice API](https://dev.twitch.tv/docs/api/).
+- Ideally [X](https://help.twitter.com/en/using-x/how-to-use-live-producer#:~:text=Broadcasts%20scheduled%20to%20Start%20later,broadcast%20before%20it%20goes%20live) as a livestream platform for said renders (+ AI stuff to show it is "alive" and "continuously improving on its own"), but perhaps [Twitch](https://twitch.tv) instead since it's the most popular platform for livestreaming and also has a [nice API](https://dev.twitch.tv/docs/api/). -->
 
 ## Milestones
 
@@ -48,12 +49,13 @@ For initial concept validation we tested on a single Mac M2 CPU (no GPU yet!) fo
 
 ### Clash Royale
 
-(detail HERE the whole pipeline to capture raw pixels from screen, action space, observation space, etc)
+TODO: elaborate
+<!---(detail HERE the whole pipeline to capture raw pixels from screen, action space, observation space, etc)
 
 Tech Specs:
 
 - For the Action Space we use the 8 possible actions (4 directions, 2 buttons) and the 4 possible cards to play
-- For the observation space we use downsampled raw screen pixels, where we currently estimate 448x448x3 being the lower size that allows reading numbers and distinguishing small cards like the skeletons. However this may be a problem, because DreamerV3 uses 64x64x3 for Minecraft and Crafter.
+- For the observation space we use downsampled raw screen pixels, where we currently estimate 448x448x3 being the lower size that allows reading numbers and distinguishing small cards like the skeletons. However this may be a problem, because DreamerV3 uses 64x64x3 for Minecraft and Crafter.-->
 
 |             2x2: Action space too large for training              |              3x3: Balanced training vs. performance               |                 4x4: Unplayable game performance                  |
 | :---------------------------------------------------------------: | :---------------------------------------------------------------: | :---------------------------------------------------------------: |
